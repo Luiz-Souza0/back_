@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const router = express.Router();
-const dataFilePath = path.join(__dirname, '../Mock/PosChaves.json');
+const dataFilePath = path.join(__dirname, '../Mock/Parcelas.json');
 
 // Verifica se o arquivo JSON existe, se não, cria um vazio
 if (!fs.existsSync(dataFilePath)) {
@@ -11,7 +11,7 @@ if (!fs.existsSync(dataFilePath)) {
 }
 
 // GET – Obter dados
-router.get('/api/poschaves', (req, res) => {
+router.get('/api/Parcelas', (req, res) => {
   fs.readFile(dataFilePath, 'utf-8', (err, data) => {
     if (err) return res.status(500).json({ error: 'Erro ao ler os dados.' });
     res.json(JSON.parse(data));
@@ -19,7 +19,7 @@ router.get('/api/poschaves', (req, res) => {
 });
 
 // POST – Adicionar novo dado
-router.post('/api/poschaves', (req, res) => {
+router.post('/api/Parcelas', (req, res) => {
   const newData = req.body;
 
   fs.readFile(dataFilePath, 'utf-8', (err, data) => {
@@ -36,7 +36,7 @@ router.post('/api/poschaves', (req, res) => {
 });
 
 // PUT – Atualizar dado (checkbox)
-router.put('/api/poschaves/:id', (req, res) => {
+router.put('/api/Parcelas/:id', (req, res) => {
   const { id } = req.params;
   const updatedData = req.body;
 
@@ -60,7 +60,7 @@ router.put('/api/poschaves/:id', (req, res) => {
 });
 
 // DELETE – Remover dado
-router.delete('/api/poschaves/:id', (req, res) => {
+router.delete('/api/Parcelas/:id', (req, res) => {
   const { id } = req.params;
 
   fs.readFile(dataFilePath, 'utf-8', (err, data) => {

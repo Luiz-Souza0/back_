@@ -5,6 +5,11 @@ const path = require('path');
 const router = express.Router();
 const dataFilePath = path.join(__dirname, '../Mock/PreChaves.json');
 
+// Verifica se o arquivo JSON existe, se não, cria um vazio
+if (!fs.existsSync(dataFilePath)) {
+  fs.writeFileSync(dataFilePath, '[]', 'utf-8'); // Cria um array vazio
+}
+
 // GET – Obter dados
 router.get('/api/prechaves', (req, res) => {
   fs.readFile(dataFilePath, 'utf-8', (err, data) => {
