@@ -4,6 +4,7 @@ const PosChaves = require('./Routes/PosChaves');
 const PreChaves = require('./Routes/PreChaves');
 const SegObra = require('./Routes/SegOb');
 const Parcelas = require('./Routes/Parcelas');
+const Login = require('./Routes/Login');
 
 const app = express();
 const port = 5000;
@@ -17,6 +18,7 @@ app.use(PosChaves);
 app.use(PreChaves);
 app.use(Parcelas);
 app.use(SegObra);
+app.use(Login);
 
 // Iniciar servidor
 app.listen(port, () => {
